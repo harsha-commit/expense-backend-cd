@@ -26,5 +26,26 @@ pipeline{
                 """
             }
         }
+        stage('Init'){
+            steps{
+                sh """
+                    terraform init -reconfigure
+                """
+            }
+        }
+        stage('Plan'){
+            steps{
+                sh """
+                    terraform plan -var="app_version=${params.appVersion}"
+                """
+            }
+        }
+        stage('Apply'){
+            steps{
+                sh """
+                    terraform apply -var="app_version=${params.appVersion}" -auto-approve
+                """
+            }
+        }
     }
 }

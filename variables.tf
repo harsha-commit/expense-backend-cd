@@ -10,3 +10,7 @@ variable "environment" {
 variable "zone_name" {
   default = "harshadevops.site"
 }
+
+variable "app_version" {
+
+}
